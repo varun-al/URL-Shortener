@@ -44,11 +44,11 @@ function App() {
   return (
     <>
       <div className="mainBody">
-        <div className="card" style={{ width: "20rm" }}>
+        <div className="cboard" style={{ width: "600px" }}>
           <div className="card-body">
-            <h5 className="card-title">URL Shortener</h5>
+            <h2 className="ctitle">URL Shortener</h2>
 
-            <div class="input-group" style={{ width: "18rm" }}>
+            <div className="input-group" style={{ width: "18rm" }}>
               <input
                 type="text"
                 id="url-input"
@@ -59,10 +59,11 @@ function App() {
               <button onClick={handleShortenUrl} id="shorten-btn">Shorten URL</button>
             </div>
 
-            <div class="output-group" style={{ width: "18rm" }}>
+            <div className="output-group" style={{ width: "18rm" }}>
               {shortenedUrl && (
                 <>
                     <a
+                      className="shortened-url"
                       href={shortenedUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -77,6 +78,12 @@ function App() {
 
             </div>
           </div>
+          
+          <div className="txt">
+          <p> Made By <a href="https://github.com/varun-al" className="txt-l">Varun A L</a> </p>
+          <p>Use <a href="https://smolurl.com/" className="txt-l">SmolUrl</a> API by German Gamboa</p>
+          </div>
+
         </div>
       </div>
     </>
