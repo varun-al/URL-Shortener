@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,17 +13,24 @@ function App() {
 
   const handleShortenUrl = async () => {
     if (url) {
-      // Example of a mock API call. Replace with your real API endpoint.
-      const response = await fetch("https://api.example.com/shorten", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ longUrl: url }),
-      });
+      try {
+        const response = await axios.post(
+          "https://smolurl.com/api/links",
+          {
+            url: url, // This is the URL you want to shorten
+          },
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-      const data = await response.json();
-      setShortenedUrl(data.shortUrl); // Assuming the API returns a "shortUrl" field.
+        setShortenedUrl(response.data.data.short_url);
+      } catch (error) {
+        console.error("Error shortening URL:", error);
+      }
     }
   };
 
@@ -36,21 +44,40 @@ function App() {
   return (
     <>
       <div className="mainBody">
-        <h1>URL Shortener</h1>
-        <input
-          type="text"
-          placeholder="Enter URL"
-          value={url}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleShortenUrl}>Shorten URL</button>
+        <div className="card" style={{ width: "20rm" }}>
+          <div className="card-body">
+            <h5 className="card-title">URL Shortener</h5>
 
-        {shortenedUrl && (
-          <>
-            <p>Shortened URL: {shortenedUrl}</p>
-            <button onClick={handleCopyToClipboard}>Copy to Clipboard</button>
-          </>
-        )}
+            <div class="input-group" style={{ width: "18rm" }}>
+              <input
+                type="text"
+                id="url-input"
+                placeholder="Enter URL"
+                value={url}
+                onChange={handleInputChange}
+              />
+              <button onClick={handleShortenUrl} id="shorten-btn">Shorten URL</button>
+            </div>
+
+            <div class="output-group" style={{ width: "18rm" }}>
+              {shortenedUrl && (
+                <>
+                    <a
+                      href={shortenedUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {shortenedUrl}
+                    </a>
+                  {/* <button onClick={handleCopyToClipboard}>
+                    Copy to Clipboard
+                  </button> */}
+                </>
+              )}
+
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

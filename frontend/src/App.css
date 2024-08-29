@@ -4,6 +4,28 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #282c34;
+  background-color: #648ddd;
   color: white;
+}
+
+.card {
+  border-radius: 40px;
+  background: linear-gradient(145deg, #5a7fc7, #6b97ec);
+  box-shadow: 15px 15px 25px #425d92, -15px -15px 25px #86bdff;
+}
+
+.input-group {
+  border: 3px solid white;
+  padding: 10px;
+  background-color: rgb(250, 145, 145);
+  margin: auto;
+  align-items: center;
+}
+
+.output-group {
+  border: 3px solid white;
+  padding: 10px;
+  background-color: rgb(250, 145, 145);
+  margin: auto;
+  align-items: center;
 }
