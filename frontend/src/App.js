@@ -81,7 +81,7 @@ function App() {
           
           <div className="txt">
           <p> Made By <a href="https://github.com/varun-al" className="txt-l">Varun A L</a> </p>
-          <p>Use <a href="https://smolurl.com/" className="txt-l">SmolUrl</a> API by German Gamboa</p>
+          <p>Used <a href="https://smolurl.com/" className="txt-l">SmolUrl</a> API by German Gamboa</p>
           </div>
 
         </div>
